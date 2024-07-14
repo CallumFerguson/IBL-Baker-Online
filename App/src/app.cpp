@@ -26,8 +26,8 @@ void runApp() {
     int environmentMapHandle = GameEngine::AssetManager::getOrLoadAssetFromPath<GameEngine::EnvironmentMap>("assets/rosendal_plains_2_1k");
     GameEngine::WebGPURenderer::setEnvironmentMap(environmentMapHandle);
 
-    GameEngine::Entity trackFPS = scene.createEntity("Track FPS");
-    trackFPS.addScript<TrackFramerate>();
+//    GameEngine::Entity trackFPS = scene.createEntity("Track FPS");
+//    trackFPS.addScript<TrackFramerate>();
 
     {
         std::string assetPath = "assets/models/BoomBox";
