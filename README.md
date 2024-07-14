@@ -1,5 +1,7 @@
 # IBL Baker Online
 
+Try a [WIP build here](https://github.com/CallumFerguson/IBL-Baker-Online/github-page/)
+
 ## Overview
 
 Image based lighting baker designed to run in a web browser using my custom game engine [ge-engine](https://github.com/CallumFerguson/ge-engine).
