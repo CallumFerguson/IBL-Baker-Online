@@ -4,3 +4,5 @@
 *.hpp text eol=lf
 *.tpp text eol=lf
 *.a binary
+
+github-page/** linguist-vendored
