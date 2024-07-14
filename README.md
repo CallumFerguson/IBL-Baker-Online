@@ -1,6 +1,6 @@
 # IBL Baker Online
 
-Try a [WIP build here](https://github.com/CallumFerguson/IBL-Baker-Online/github-page/)
+Try a [WIP build here](https://callumferguson.github.io/IBL-Baker-Online/github-page/)
 
 ## Overview
 
