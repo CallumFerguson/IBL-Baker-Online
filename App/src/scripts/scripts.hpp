@@ -7,3 +7,4 @@
 #include "TrackFramerate.hpp"
 #include "PBRColorRandomizer.hpp"
 #include "FullscreenTexture.hpp"
+#include "Baker.hpp"

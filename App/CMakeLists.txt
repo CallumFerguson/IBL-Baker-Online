@@ -18,6 +18,7 @@ set(
         src/scripts/Rotator.cpp
         src/scripts/PBRColorRandomizer.cpp
         src/scripts/FullscreenTexture.cpp
+        src/scripts/Baker.cpp
 
         src/utility/utility.cpp
 )

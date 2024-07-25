@@ -23,6 +23,9 @@ void runApp() {
     camera.addComponent<GameEngine::CameraComponent>(65.0f);
     camera.addScript<CameraController>();
 
+    auto baker = scene.createEntity("Baker");
+    baker.addScript<Baker>();
+
     int environmentMapHandle = GameEngine::AssetManager::getOrLoadAssetFromPath<GameEngine::EnvironmentMap>("assets/rosendal_plains_2_1k");
     GameEngine::WebGPURenderer::setEnvironmentMap(environmentMapHandle);
 
