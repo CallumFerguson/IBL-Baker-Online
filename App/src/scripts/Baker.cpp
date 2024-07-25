@@ -51,3 +51,56 @@ void Baker::onImGui() {
     ImGui::Begin("Output", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
     ImGui::End();
 }
+
+void dropCallback(GLFWwindow *window, int count, const char **paths) {
+    for (size_t i = 0; i < count; i++) {
+        std::filesystem::path currentPath(paths[i]);
+
+        if (std::filesystem::is_regular_file(currentPath)) {
+            std::ifstream file(currentPath);
+            if (file.is_open()) {
+                std::cout << "Contents of file " << currentPath << ":\n";
+                std::cout << std::string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()) << "\n";
+                file.close();
+            } else {
+                std::cerr << "Unable to open file " << currentPath << "\n";
+            }
+        } else if (std::filesystem::is_directory(currentPath)) {
+            std::cout << "Directory path: " << currentPath << "\n";
+        } else {
+            std::cerr << "Not a regular file or directory: " << currentPath << "\n";
+        }
+    }
+}
+
+void Baker::onStart() {
+    GameEngine::Window::mainWindow().addDropCallback([](std::vector<std::filesystem::path>& paths) {
+        if(paths.empty()) {
+            std::cout << "no files dropped" << std::endl;
+        }
+        if(paths.size() > 1) {
+            std::cout << "dropped " << paths.size() << " files. ignoring all the but one of the files" << std::endl;
+        }
+
+        auto &path = paths.back();
+
+        if (std::filesystem::is_regular_file(path)) {
+            if(path.extension() == ".hdr") {
+                std::ifstream file(path);
+                if (file.is_open()) {
+                    std::cout << "Contents of file " << path << ":\n";
+//                    std::cout << std::string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()) << "\n";
+                    file.close();
+                } else {
+                    std::cerr << "Unable to open file " << path << "\n";
+                }
+            } else {
+                std::cout << "Unsupported file type " << path.extension() << ". Only .hdr is supported." << std::endl;
+            }
+        } else if (std::filesystem::is_directory(path)) {
+            std::cout << "Directory path: " << path << "\n";
+        } else {
+            std::cerr << "Not a regular file or directory: " << path << "\n";
+        }
+    });
+}
